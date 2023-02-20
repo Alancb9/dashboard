@@ -249,4 +249,4 @@ let loadData = () => {
 
     chart1.data.datasets[0].data = newData;
 }
-loadData()
+loadData();
