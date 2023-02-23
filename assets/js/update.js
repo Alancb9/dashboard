@@ -98,33 +98,53 @@ let updateData = () =>{
     let porcentaje_de_cambio_nc = (valor_actual_nc - valor_previo_nc)*100/valor_previo_nc;
     let porcentaje_de_cambio_ven = (valor_actual_ven - valor_previo_ven)*100/valor_previo_ven;
 
+    let clase_cambio_da;
+    let clase_cambio_ua;
+    let clase_cambio_nc;
+    let clase_cambio_ven;
+
     if (porcentaje_de_cambio_da > 0) {
-        let clase_cambio_da = 'text-success';
+        clase_cambio_da = 'text-success';
+        porcentaje_de_cambio_da = "+" + Math.round(porcentaje_de_cambio_da).toString() + "%";
     } else {
-        let clase_cambio_da = 'text-danger';
+        clase_cambio_da = 'text-danger';
+        porcentaje_de_cambio_da = Math.round(porcentaje_de_cambio_da).toString() + "%";
     }
     if (porcentaje_de_cambio_ua > 0) {
-        let clase_cambio_ua = 'text-success';
+        clase_cambio_ua = 'text-success';
+        porcentaje_de_cambio_ua = "+" + (Math.round(porcentaje_de_cambio_ua)).toString() + "%";
     } else {
-        let clase_cambio_ua = 'text-danger';
+        clase_cambio_ua = 'text-danger';
+        porcentaje_de_cambio_ua = (Math.round(porcentaje_de_cambio_ua)).toString() + "%";
     }
     if (porcentaje_de_cambio_nc > 0) {
-        let clase_cambio_nc = 'text-success';
+        clase_cambio_nc = 'text-success';
+        porcentaje_de_cambio_nc = "+" + (Math.round(porcentaje_de_cambio_nc)).toString() + "%";
     } else {
-        let clase_cambio_nc = 'text-danger';
+        clase_cambio_nc = 'text-danger';
+        porcentaje_de_cambio_nc = (Math.round(porcentaje_de_cambio_nc)).toString() + "%";
     }
     if (porcentaje_de_cambio_ven > 0) {
-        let clase_cambio_ven = 'text-success';
+        clase_cambio_ven = 'text-success';
+        porcentaje_de_cambio_ven = "+" + (Math.round(porcentaje_de_cambio_ven)).toString() + "%";
     } else {
-        let clase_cambio_ven = 'text-danger';
+        clase_cambio_ven = 'text-danger';
+        porcentaje_de_cambio_ven = (Math.round(porcentaje_de_cambio_ven)).toString() + "%";
     }
 
-    let mensaje_da = `<p class="mb-0"><span class="text-sm ${clase_cambio_da} font-weight-bolder"> ${porcentaje_de_cambio_da} </span> ${mensaje_tiempo} </p>`
-    let mensaje_ua = `<p class="mb-0"><span class="text-sm ${clase_cambio_ua} font-weight-bolder"> ${porcentaje_de_cambio_ua} </span> ${mensaje_tiempo} </p>`
-    let mensaje_nc = `<p class="mb-0"><span class="text-sm ${clase_cambio_nc} font-weight-bolder"> ${porcentaje_de_cambio_nc} </span> ${mensaje_tiempo} </p>`
-    let mensaje_ven = `<p class="mb-0"><span class="text-sm ${clase_cambio_da} font-weight-bolder"> ${porcentaje_de_cambio_da} </span> ${mensaje_tiempo} </p>`
+    let mensaje_da = `<p class="mb-0"><span class="text-sm ${clase_cambio_da} font-weight-bolder"> ${porcentaje_de_cambio_da} </span> ${mensaje_tiempo_da} </p>`
+    let mensaje_ua = `<p class="mb-0"><span class="text-sm ${clase_cambio_ua} font-weight-bolder"> ${porcentaje_de_cambio_ua} </span> ${mensaje_tiempo_ua} </p>`
+    let mensaje_nc = `<p class="mb-0"><span class="text-sm ${clase_cambio_nc} font-weight-bolder"> ${porcentaje_de_cambio_nc} </span> ${mensaje_tiempo_nc} </p>`
+    let mensaje_ven = `<p class="mb-0"><span class="text-sm ${clase_cambio_da} font-weight-bolder"> ${porcentaje_de_cambio_da} </span> ${mensaje_tiempo_da} </p>`
 
     let lista_elementos = document.getElementsByClassName('card-footer p-3');
+
+    let [primero, segundo, tercero, cuarto] = lista_elementos;
+
+    primero.innerHTML = mensaje_da;
+    segundo.innerHTML = mensaje_ua;
+    tercero.innerHTML = mensaje_nc;
+    cuarto.innerHTML = mensaje_ven;
     
 }
 updateData();
